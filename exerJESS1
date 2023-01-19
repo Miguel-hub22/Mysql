@@ -1,0 +1,68 @@
+-- comando de criação de banco de dados
+CRIAR BANCO DE  DADOS  ecommerce ;
+
+-- comando que seleciona o banco de dados que vamos trabalhar
+USE comércio eletrônico;
+
+
+-- comando de criação de mesas
+CRIAR  TABELA  produtos (
+-- define uma coluna com o nome id, que aceitará dados do tipo BIGINT e será auto incrementada pelo sql
+	id BIGINT auto_increment,
+
+    -- define uma coluna com nome nome, que aceitará dados do tipo varchar e poderá armazenar até 255 caracteres(letras e números)
+    nome VARCHAR ( 255 ),
+
+    -- define a coluna com nome preco, que aceitará dados do tipo decimal, armazenando até oito números contendo dois números após a virgula
+    preco DECIMAL ( 8 , 2 ),
+
+    -- define a coluna com nome de voz, que aceitará dados do tipo inteiro(números inteiros)
+    volume INT ,
+    marca VARCHAR ( 255 ),
+
+    -- define que a coluna que vai ser identificada como chave primária da tabela será a coluna de id criada anteriormente
+	CHAVE PRIMÁRIA (id)
+);
+
+-- comando para inserir valores dentro da tabela de produtos nos campos de nome, preço, quantidade e marca, serão atribuídos os valores que estão dentro dos parenteses de valores
+INSERT INTO produtos(nome,preco,quantidade,marca)
+
+-- valores que serão inseridos na ordem declarada acima
+VALORES ( " Camiseta " , 19 . 90 , 5 , " Lacote " ) ;
+
+INSERT INTO produtos(nome,preco,quantidade,marca)
+VALORES ( " Calça " , 300,90 , 10 , " Kelvin Cleiton " ) ;
+
+INSERT INTO produtos(nome,preco,quantidade,marca)
+VALORES ( " Tênis " , 35 . 90 , 2 , " Adidos " ) ;
+
+INSERT INTO produtos(nome,preco,quantidade,marca)
+VALORES ( " Meia " , 100 , 2 , " Naique " );
+
+INSERT INTO produtos(nome,preco,quantidade,marca)
+VALORES ( " Boné " , 1035 . 90 , 5 , " Pumba " ) ;
+
+-- select que retorna todos os dados da tabela
+SELECIONE  *  DE produtos;
+
+-- selecione que retorne apenas os produtos de valor inferior a 500
+
+SELECT  *  FROM produtos ONDE preço <  500 ;
+
+-- select que retorna apenas os produtos de valor maior que 500
+
+SELECIONE  *  DE produtos ONDE preço >  500 ;
+
+-- atualizar um dado da tabela de produtos, onde o id for igual ao indicado
+
+ATUALIZAR produtos
+SET nome =  " Camiseta "
+ONDE id = 1 ;
+
+
+-- BÔNUS
+-- função que deleta um determinado dado de uma tabela
+DELETE  FROM produtos WHERE id = 1 ;
+
+-- comando que desativa o 'modo seguro' do mysql permitindo que seja executado update e delete
+SET SQL_SAFE_UPDATES = 0 ;
